@@ -1,0 +1,26 @@
+[project]
+name = "garmin-mcp-bridge"
+version = "0.1.0"
+description = "MCP server exposing Garmin training data to Claude and other MCP clients via Intervals.icu"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+keywords = ["mcp", "garmin", "intervals.icu", "training", "triathlon", "running", "claude"]
+dependencies = [
+    "mcp>=1.2.0",
+    "httpx>=0.27.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/jonas-theobald/garmin-mcp-bridge"
+Issues = "https://github.com/jonas-theobald/garmin-mcp-bridge/issues"
+
+[project.scripts]
+garmin-mcp-bridge = "garmin_mcp_bridge.server:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["garmin_mcp_bridge"]
