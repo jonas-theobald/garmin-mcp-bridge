@@ -101,6 +101,16 @@ uv sync
 INTERVALS_API_KEY=your_key uv run selftest.py
 ```
 
+**Setting the key locally without typing it inline every time:** copy `.env.example` to `.env` and fill in your key — `.env` is gitignored, so it never gets committed. `uv run` picks it up with `--env-file`:
+
+```bash
+cp .env.example .env
+# edit .env, set INTERVALS_API_KEY
+uv run --env-file .env selftest.py
+```
+
+This keeps the key out of your shell history and out of the client config below — useful for local testing. It is separate from the client config's `env` block, which the MCP client needs regardless (see [Keeping the key out of the config](#keeping-the-key-out-of-the-config) for avoiding plaintext there too).
+
 Then add this to your client's config file:
 
 | OS | Path |
