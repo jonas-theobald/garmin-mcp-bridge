@@ -67,7 +67,10 @@ def main() -> int:
         if not acts:
             return "0 activities in last 30d — has the Garmin backfill run?"
         newest = acts[0]
-        return f"{len(acts)} activities, newest: {newest.get('type')} {newest.get('start_date_local')}"
+        return (
+            f"{len(acts)} activities, newest: {newest.get('type')} "
+            f"{newest.get('start_date_local')}"
+        )
 
     def _detail():
         acts = state.get("activities") or []

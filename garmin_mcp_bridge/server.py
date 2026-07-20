@@ -14,7 +14,7 @@ from typing import Any
 
 from mcp.server.fastmcp import FastMCP
 
-from .client import IntervalsClient, IntervalsError, summarize_stream
+from .client import IntervalsClient, summarize_stream
 
 mcp = FastMCP("intervals-icu")
 
