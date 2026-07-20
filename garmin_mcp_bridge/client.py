@@ -49,7 +49,13 @@ class IntervalsClient:
     athlete who owns the key, so no athlete id needs to be configured.
     """
 
-    def __init__(self, api_key: str | None = None, athlete_id: str = "0", timeout: float = 30.0):
+    def __init__(
+        self,
+        api_key: str | None = None,
+        athlete_id: str = "0",
+        timeout: float = 30.0,
+        transport: httpx.BaseTransport | None = None,
+    ):
         key = api_key or os.environ.get("INTERVALS_API_KEY")
         if not key:
             raise IntervalsError(
@@ -64,6 +70,7 @@ class IntervalsClient:
             timeout=timeout,
             headers={"User-Agent": USER_AGENT, "Accept": "application/json"},
             follow_redirects=True,
+            transport=transport,
         )
 
     # ---------------------------------------------------------------- internals
